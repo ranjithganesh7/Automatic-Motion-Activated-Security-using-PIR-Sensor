@@ -11,6 +11,10 @@
 6.	Jumper wires – As required
 7.	USB Cable – 1 No (for uploading code and powering Arduino)
 8.	Computer with Tinkercad or Arduino IDE installed
+   
+## Circuit Diagram:
+
+<img width="1025" height="707" alt="image" src="https://github.com/user-attachments/assets/e90a031a-598a-4841-805d-3ce28148c4de" />
 
 ## Theory:
 
@@ -61,7 +65,29 @@ Step 7: Save Your Work
 
 # Code:
 
+---
+int pirPin = 2;        // PIR sensor OUT pin connected to D2
+int ledPin = 13;       // Built-in LED pin
 
+void setup() {
+  pinMode(pirPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);  // for monitoring in Serial Monitor
+}
+
+void loop() {
+  int motionState = digitalRead(pirPin);
+
+  if (motionState == HIGH) {
+    digitalWrite(ledPin, HIGH);   // Turn LED ON
+    Serial.println("Motion Detected!");
+  } else {
+    digitalWrite(ledPin, LOW);    // Turn LED OFF
+    Serial.println("No Motion");
+  }
+}
+
+---
 
 # Output:
 
